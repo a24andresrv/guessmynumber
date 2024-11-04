@@ -40,7 +40,10 @@ fun jugar():Unit {
         println("Lo siento no adivinaste el número secreto $secreto en $intentos intentos")
     }
 }
+import java.io.File
+fun traza(){
 
+}
 fun main() {
     println("1. Jugar")
     println("2. Ver traza de último intento")
@@ -49,7 +52,7 @@ fun main() {
     var opcion= readln().toInt()
     when (opcion){
         1 -> jugar()
-        //2 -> traza()
+        2 -> traza()
         //3 -> salir()
     }
 }
