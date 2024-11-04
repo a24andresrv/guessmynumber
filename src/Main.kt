@@ -1,4 +1,10 @@
 import java.io.File
+const val BG_GREEN = "\u001B[42m"
+const val BG_YELLOW = "\u001B[43m"
+const val GREEN = "\u001B[32m"
+const val RESET = "\u001B[0m"
+const val BLACK = "\u001B[30m"
+const val BOLD = "\u001B[1m"
 fun numerosecreto():String{
     val lista= mutableListOf(1,2,3,4,5,6)
     lista.shuffle()
@@ -15,8 +21,9 @@ fun jugar():Unit {
     var intentos = 2
     var aciertos = 0
     var coincidencias = 0
-    for (intentos in 0 until intentos) {
-        print("teclea un número de 4 cifras sin números repetidos: ")
+    val lectura=""
+    for (i in 1 .. intentos) {
+        print("${BOLD}Teclea un número de 4 cifras sin números repetidos: ")
         val lectura = readln()
         aciertos = 0
         coincidencias = 0
@@ -33,31 +40,39 @@ fun jugar():Unit {
         }
         if (aciertos == secreto.length) {
             println("Has adivinado el número secreto")
+            File("traza.txt").appendText("Intento $i: $lectura, Has adivinado el número secreto.\n")
             break
         }
-        println("aciertos = $aciertos")
-        println("coincidencias = $coincidencias")
+        print(lectura+"   ")
+        print("${BG_GREEN}${BLACK}  $aciertos  ")
+        print("${BG_YELLOW}${BLACK}  $coincidencias  ${RESET}")
+        println()
+        File("traza.txt").appendText("Intento $i: $lectura, Aciertos: $aciertos, Coincidencias: $coincidencias\n")
     }
     if(aciertos != secreto.length){
         println("Lo siento no adivinaste el número secreto $secreto en $intentos intentos")
     }
-    File("traza.txt").appendText("Intento $intentos)
+
 }
 fun traza(){
+    var contenido=File("traza.txt").readLines()
+    for (linea in contenido){
+        println(linea)
+    }
 
 }
 fun main() {
     var opcion = 0
     while (opcion != 3) {
-        println("1. Jugar")
-        println("2. Ver traza de último intento")
-        println("3. Salir")
-        print("opción: ")
+        println("${BOLD}${GREEN}1. Jugar")
+        println("${GREEN}2. Ver traza de último intento")
+        println("${GREEN}3. Salir")
+        print("${GREEN}opción:${RESET} ")
         opcion= readln().toInt()
         when (opcion) {
             1 -> jugar()
             2 -> traza()
         }
     }
-    println("Gracias por jugar.")
+    println("${GREEN}Gracias por jugar.")
 }
