@@ -10,6 +10,7 @@ fun numerosecreto():String{
 }
 fun jugar():Unit {
     val secreto = numerosecreto()
+    File("traza.txt").writeText("numero secreto: $secreto\n")
     println(secreto)
     var intentos = 2
     var aciertos = 0
@@ -40,13 +41,11 @@ fun jugar():Unit {
     if(aciertos != secreto.length){
         println("Lo siento no adivinaste el número secreto $secreto en $intentos intentos")
     }
-    File("traza.txt")
-    println()
+    File("traza.txt").appendText("Intento $intentos)
 }
 fun traza(){
 
 }
-
 fun main() {
     var opcion = 0
     while (opcion != 3) {
