@@ -1,3 +1,4 @@
+import java.io.File
 fun numerosecreto():String{
     val lista= mutableListOf(1,2,3,4,5,6)
     lista.shuffle()
@@ -10,7 +11,7 @@ fun numerosecreto():String{
 fun jugar():Unit {
     val secreto = numerosecreto()
     println(secreto)
-    var intentos = 8
+    var intentos = 2
     var aciertos = 0
     var coincidencias = 0
     for (intentos in 0 until intentos) {
@@ -39,20 +40,25 @@ fun jugar():Unit {
     if(aciertos != secreto.length){
         println("Lo siento no adivinaste el número secreto $secreto en $intentos intentos")
     }
+    File("traza.txt")
+    println()
 }
-import java.io.File
 fun traza(){
 
 }
+
 fun main() {
-    println("1. Jugar")
-    println("2. Ver traza de último intento")
-    println("3. Salir")
-    print("opción: ")
-    var opcion= readln().toInt()
-    when (opcion){
-        1 -> jugar()
-        2 -> traza()
-        //3 -> salir()
+    var opcion = 0
+    while (opcion != 3) {
+        println("1. Jugar")
+        println("2. Ver traza de último intento")
+        println("3. Salir")
+        print("opción: ")
+        opcion= readln().toInt()
+        when (opcion) {
+            1 -> jugar()
+            2 -> traza()
+        }
     }
+    println("Gracias por jugar.")
 }
