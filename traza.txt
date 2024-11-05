@@ -1,3 +1,2 @@
-numero secreto: 3645
-Intento 1: 2546, Aciertos: 1, Coincidencias: 2
-Intento 2: 3645, Has adivinado el número secreto.
+numero secreto: 1435
+Intento 1: 1546, Aciertos: 1, Coincidencias: 2
