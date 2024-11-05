@@ -16,7 +16,7 @@ fun numerosecreto():String{
     return numerosecreto
 }
 //Función que se encarga del juego
-fun jugar():Unit {
+fun jugar() {
     val secreto = numerosecreto()
     File("traza.txt").writeText("numero secreto: $secreto\n")
     //println(secreto)
